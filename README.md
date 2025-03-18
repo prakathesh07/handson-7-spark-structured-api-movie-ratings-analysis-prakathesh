@@ -29,15 +29,16 @@ Before starting the assignment, ensure you have the following software installed
    - [Docker Installation Guide](https://docs.docker.com/get-docker/)
    - [Docker Compose Installation Guide](https://docs.docker.com/compose/install/)
 
-**Overview**
+## **Overview**
+
 This project leverages PySpark's Structured APIs to analyze a dataset containing movie ratings, user engagement, and streaming behavior. The analysis provides insights into:
 
-Binge-watching patterns by age group
-Churn risk users
-Movie-watching trends over the years
+- Binge-watching patterns by age group
+- Churn risk users
+- Movie-watching trends over the years
 
-**Project Structure**
-
+## **Project Structure**
+```
 MovieRatingsAnalysis/
 ├── input/
 │   └── movie_ratings_data.csv
@@ -51,19 +52,25 @@ MovieRatingsAnalysis/
 │   └── task3_movie_watching_trends.py
 ├── docker-compose.yml (optional)
 └── README.md
-**Technology Stack**
-Python 3.x
-PySpark
-Apache Spark
+```
 
-How to Run the Project
-**1. Local Execution**
+## **Technology Stack**
+- Python 3.x
+- PySpark
+- Apache Spark
 
+## **How to Run the Project**
+
+### **1. Local Execution**
+```bash
 cd MovieRatingsAnalysis/
 spark-submit src/task1_binge_watching_patterns.py
 spark-submit src/task2_churn_risk_users.py
 spark-submit src/task3_movie_watching_trends.py
-**2. Docker (Optional)**
+```
+
+### **2. Docker (Optional)**
+```bash
 docker-compose up -d
 docker exec -it spark-master bash
 cd /opt/bitnami/spark/
@@ -72,43 +79,45 @@ spark-submit src/task2_churn_risk_users.py
 spark-submit src/task3_movie_watching_trends.py
 exit
 docker-compose down
+```
 
+## **Dataset**
+The dataset is present in the `input` folder, saved as `movie_ratings_data.csv`.
 
-Dataset is present in input folder saved as movie_rating_data.csv
-**Example**
+### **Example Data**
+```
 UserID,MovieID,MovieTitle,Genre,Rating,ReviewCount,WatchedYear,UserLocation,AgeGroup,StreamingPlatform,WatchTime,IsBingeWatched,SubscriptionStatus
 1,304,The Matrix,Sci-Fi,2.1,21,2019,US,Senior,Disney+,65,False,Canceled
 2,998,Interstellar,Sci-Fi,4.8,36,2019,UK,Senior,Amazon,92,True,Canceled
 3,684,The Dark Knight,Action,2.7,4,2019,Canada,Senior,Netflix,118,True,Active
-4,380,Spider-Man: No Way Home,Action,2.1,10,2018,US,Senior,Disney+,204,True,Canceled
-5,697,Avengers: Endgame,Action,3.9,46,2022,Australia,Adult,Apple TV,239,False,Active
-6,481,The Godfather,Crime,4.8,9,2018,US,Teen,Amazon,209,True,Canceled
-7,683,The Lion King,Animation,3.8,48,2022,Germany,Teen,Hulu,160,False,Active
-8,810,The Shawshank Redemption,Drama,4.5,19,2019,Germany,Adult,Disney+,167,True,Active
-9,304,The Shawshank Redemption,Drama,3.9,5,2021,Australia,Teen,Amazon,198,True,Active
-10,275,Avengers: Endgame,Action,4.0,15,2018,Germany,Senior,Amazon,119,False,Canceled
-11,562,The Lion King,Animation,4.1,34,2020,France,Senior,HBO Max,80,False,Canceled
+...
+```
 
-Task Outputs
-**Task 1: Binge-Watching Patterns by Age Group**
-Output: 
-AgeGroup	BingeWatchers	Percentage
-Adult	14	37.84%
-Senior	11	32.35%
-Teen	14	48.28%
-**Task 2: Churn Risk Users**
-Churn Risk Users	Total Users
-Users with low watch time & canceled subscriptions	20
-**Task 3: Movie-Watching Trends by Year**
-WatchedYear	MoviesWatched
-2018	13
-2019	20
-2020	18
-2021	16
-2022	13
-2023	20
+## **Task Outputs**
 
-**Key Insights**
-Teenagers binge-watch the most (48.28%).
-20 users are identified as high-risk churn (canceled + <100 min watch time).
-2019 and 2023 were peak years for movie watching, with 20 movies watched each year.
+### **Task 1: Binge-Watching Patterns by Age Group**
+| AgeGroup | BingeWatchers | Percentage |
+|----------|--------------|------------|
+| Adult    | 14           | 37.84%     |
+| Senior   | 11           | 32.35%     |
+| Teen     | 14           | 48.28%     |
+
+### **Task 2: Churn Risk Users**
+| Churn Risk Users | Total Users |
+|------------------|-------------|
+| Users with low watch time & canceled subscriptions | 20 |
+
+### **Task 3: Movie-Watching Trends by Year**
+| WatchedYear | MoviesWatched |
+|------------|--------------|
+| 2018       | 13           |
+| 2019       | 20           |
+| 2020       | 18           |
+| 2021       | 16           |
+| 2022       | 13           |
+| 2023       | 20           |
+
+## **Key Insights**
+- Teenagers binge-watch the most (**48.28%**).
+- **20 users** are identified as high-risk churn (canceled + <100 min watch time).
+- **2019 and 2023** were peak years for movie watching, with **20 movies watched** each year.
