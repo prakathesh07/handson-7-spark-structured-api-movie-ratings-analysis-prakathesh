@@ -64,9 +64,6 @@ spark-submit src/task1_binge_watching_patterns.py
 spark-submit src/task2_churn_risk_users.py
 spark-submit src/task3_movie_watching_trends.py
 **2. Docker (Optional)**
-bash
-Copy
-Edit
 docker-compose up -d
 docker exec -it spark-master bash
 cd /opt/bitnami/spark/
